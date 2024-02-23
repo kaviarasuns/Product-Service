@@ -1,0 +1,21 @@
+meta {
+  name: deleteProductById
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseURL}}/api/v1/products/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title" : "test 2",
+    "price" : 15.3,
+    "description" : "test",
+    "image": "http://teamrepublic.com",
+    "category": "test"
+  }
+}

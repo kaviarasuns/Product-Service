@@ -1,0 +1,21 @@
+meta {
+  name: createProducts
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseURL}}/api/v1/products
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title" : "test 2",
+    "price" : 15.3,
+    "description" : "test",
+    "image": "http://teamrepublic.com",
+    "category": "test"
+  }
+}

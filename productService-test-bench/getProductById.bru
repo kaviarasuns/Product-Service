@@ -1,0 +1,21 @@
+meta {
+  name: getProductById
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseURL}}/api/v1/products/1223
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "test product",
+    "price" : 14.5,
+    "description": "lorem ipsum",
+    "image" : "https://teamrepublic.om",
+    "category": "electronic"
+  }
+}
