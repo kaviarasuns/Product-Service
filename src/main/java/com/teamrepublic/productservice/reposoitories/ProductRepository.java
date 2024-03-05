@@ -9,4 +9,7 @@ import java.util.UUID;
 @Repository
 public interface ProductRepository
 extends JpaRepository<Product, UUID> {
+    Product findByTitleEquals(String title);
+
+    Product findByTitleEqualsAndPrice_Price(String title, double price);
 }

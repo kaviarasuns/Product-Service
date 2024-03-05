@@ -5,8 +5,10 @@ import com.teamrepublic.productservice.inheritancedemo.tableperclass.MentorRepos
 import com.teamrepublic.productservice.inheritancedemo.tableperclass.User;
 import com.teamrepublic.productservice.inheritancedemo.tableperclass.UserRepository;
 import com.teamrepublic.productservice.models.Category;
+import com.teamrepublic.productservice.models.Price;
 import com.teamrepublic.productservice.models.Product;
 import com.teamrepublic.productservice.reposoitories.CategoryRepository;
+import com.teamrepublic.productservice.reposoitories.PriceRepository;
 import com.teamrepublic.productservice.reposoitories.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -26,15 +28,18 @@ public class ProductserviceApplication implements CommandLineRunner {
     private UserRepository userRepository;
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final PriceRepository priceRepository;
 
     public ProductserviceApplication(@Qualifier("tbc_mr") MentorRepository mentorRepository,
                                      @Qualifier("tbc_ur") UserRepository userRepository,
                                      ProductRepository productRepository,
-                                     CategoryRepository categoryRepository){
+                                     CategoryRepository categoryRepository,
+                                     PriceRepository priceRepository){
         this.mentorRepository = mentorRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
+        this.priceRepository = priceRepository;
     }
 
     public static void main(String[] args) {
@@ -67,14 +72,16 @@ public class ProductserviceApplication implements CommandLineRunner {
         Category savedCategory = categoryRepository.save(category);
 
         Product product = new Product();
+        Price price = new Price("Rupee",10);
+//        Price savedPrice = priceRepository.save(price);
+
         product.setTitle("iPhone 15 Pro");
         product.setDescription("The best iPhone Ever");
+        product.setPrice(price);
         product.setCategory(savedCategory);
 
 
         productRepository.save(product);
-
-        Category category1 = categoryRepository.findById(UUID.fromString("0169cabb-1293-4f9e-81ef-f4af88c728e8")).get();
 
     }
 }
